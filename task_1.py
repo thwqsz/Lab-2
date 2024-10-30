@@ -6,12 +6,12 @@ dataset_path = 'books-en.csv'
 # пункт 1
 def get_obj(data):
     data.seek(0)
-    c = 0
+    count = 0
     reader = csv.DictReader(data, delimiter=';')
     for i in reader:
         if len(i["Book-Title"]) > 30:
-            c += 1
-    return c
+            count += 1
+    return count
 
 
 # пункт 2
@@ -28,13 +28,13 @@ def find_book_with_author(data, author):
 # пункт 3
 def task_3(data):
     data.seek(0)
-    c = 0
+    limit = 0
     reader = csv.DictReader(data, delimiter=';')
     with open('task_1.3.txt', 'w') as file:
         for i in reader:
-            c += 1
-            file.write(f"{i["Book-Author"]}. {i["Book-Title"]} - {i["Year-Of-Publication"]}\n")
-            if c == 20:
+            limit += 1
+            file.write(f"{i['Book-Author']}. {i['Book-Title']} - {i['Year-Of-Publication']}\n")
+            if limit == 20:
                 break
 
 
